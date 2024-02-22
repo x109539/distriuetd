@@ -1,7 +1,17 @@
-POST /Instock HTTP/1.1Host:www.example.orgContent-Type:application/soap+xml;charset=utf-8Content-Length:nnn
-<?xml version="1.0"?>
-<soap:Envelopexmlns:soap="http://www.w3.org/2001/12/soap-envelope"soap:encodingStyle="http://www.w3.orq/2001/12/soap-encoding">
-<soap:Body xmlns:m="http://www.example.org/stock">
-<m:GetstockPrice>
-<m:stockName>IBM</m:stockName></m:GetstockPrice></soap:Body>
-</soap:Envelope>
+POST /OnlineShoppingService HTTP/1.1
+Host:  
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+SOAPAction: " "
+
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv=" "
+                  xmlns:shop=" ">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <shop:AddToCartRequest>
+         <shop:ProductID>12345</shop:ProductID>
+         <shop:Quantity>1</shop:Quantity>
+      </shop:AddToCartRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
