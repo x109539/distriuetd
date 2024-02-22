@@ -1,51 +1,37 @@
 import javax.xml.soap.*;
 
-public class ShoppingSearchScript {
+public class AmazonAdvertisingAPISearch {
+
     public static void main(String[] args) {
         try {
             
-            String wsdlURL = "https://example.com/shopping-service?wsdl";
+            String wsdlURL = "https://advertising.amazon.com/API/soap?wsdl";
 
-       
+            
             SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
             SOAPConnection soapConnection = soapConnectionFactory.createConnection();
             SOAPMessage soapMessage = MessageFactory.newInstance().createMessage();
 
             
-            String searchOperation = "SearchProduct";
-            String namespaceURI = "http://example.com/shopping";
+            String method = "YourSearchMethod";
+            String searchKeyword = "computer";
 
             
             SOAPPart soapPart = soapMessage.getSOAPPart();
             SOAPEnvelope envelope = soapPart.getEnvelope();
             SOAPBody soapBody = envelope.getBody();
-            SOAPElement soapElement = soapBody.addChildElement(searchOperation, "", namespaceURI);
-
-           
-            soapElement.addChildElement("keyword").addTextNode("Laptop");
+            SOAPElement soapElement = soapBody.addChildElement(method);
+            soapElement.addChildElement("searchKeyword").addTextNode(searchKeyword);
 
             
             SOAPMessage soapResponse = soapConnection.call(soapMessage, wsdlURL);
 
-            
-            processSOAPResponse(soapResponse);
+            System.out.println("Response from " + method + ": ");
+            soapResponse.writeTo(System.out);
 
-           
             soapConnection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static void processSOAPResponse(SOAPMessage soapResponse) throws SOAPException {
-        
-        SOAPBody responseBody = soapResponse.getSOAPBody();
-        String productName = responseBody.getElementsByTagName("ProductName").item(0).getTextContent();
-        String price = responseBody.getElementsByTagName("Price").item(0).getTextContent();
-
-    
-        System.out.println("Search Result:");
-        System.out.println("Product Name: " + productName);
-        System.out.println("Price: " + price);
     }
 }
