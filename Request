@@ -1,0 +1,7 @@
+POST /Instock HTTP/1.1Host:www.example.orgContent-Type:application/soap+xml;charset=utf-8Content-Length:nnn
+<?xml version="1.0"?>
+<soap:Envelopexmlns:soap="http://www.w3.org/2001/12/soap-envelope"soap:encodingStyle="http://www.w3.orq/2001/12/soap-encoding">
+<soap:Body xmlns:m="http://www.example.org/stock">
+<m:GetstockPrice>
+<m:stockName>IBM</m:stockName></m:GetstockPrice></soap:Body>
+</soap:Envelope>
