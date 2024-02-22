@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Content-Type:application/soap+xml;charset=utf-8Content-Length:nnn
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.orq/2001/12/soap-envelope"soap:encodingstyle="http://www.w3.org/2001/12/soap-encoding">
+<soap:Body xmlns:m="http://www.example.org/stock"><m:GetStockPriceResponse>
+<m:Price>34.5</m:Price>
+</m:GetStockPriceResponse>
+</soap:Body>
+</soap:Envelope>
