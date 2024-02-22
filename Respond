@@ -1,10 +1,17 @@
-HTTP/1.1 200 OK
-Content-Type:application/soap+xml;charset=utf-8Content-Length:nnn
-<?xml version="1.0"?>
-<soap:Envelope
-xmlns:soap="http://www.w3.orq/2001/12/soap-envelope"soap:encodingstyle="http://www.w3.org/2001/12/soap-encoding">
-<soap:Body xmlns:m="http://www.example.org/stock"><m:GetStockPriceResponse>
-<m:Price>34.5</m:Price>
-</m:GetStockPriceResponse>
-</soap:Body>
-</soap:Envelope>
+POST /OnlineShoppingService HTTP/1.1
+Host:  https://advertising.amazon.com/API/docs
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+SOAPAction: " https://advertising.amazon.com/API/docs "
+
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="https://advertising.amazon.com/API/docs "
+                  xmlns:shop=" https://advertising.amazon.com/API/docs">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <shop:AddToCartRequest>
+         <shop:ProductID>12345</shop:ProductID>
+         <shop:Quantity>1</shop:Quantity>
+      </shop:AddToCartRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
